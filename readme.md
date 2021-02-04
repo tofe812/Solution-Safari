@@ -1,5 +1,5 @@
 
-# projects hub
+# Solution Safari
 
 ## (Problem)
 ---
