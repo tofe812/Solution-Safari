@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+     <title>Submission Form</title>
+
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <!-- <meta name="description" content="">
+     <meta name="keywords" content="">
+     <meta name="author" content=""> -->
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+     <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+     <link rel="stylesheet" href="../static/css/font-awesome.min.css">
+     <link rel="stylesheet" href="../static/css/aos.css">
+     <link rel="stylesheet" href="../static/css/owl.carousel.min.css">
+     <link rel="stylesheet" href="../static/css/owl.theme.default.min.css">
+     <link rel="stylesheet" href="../static/style.css">
+     <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet"/>
+     
+
+</head>
+<body>
+
+     <!-- MENU BAR. same in all pages-->
+     <nav class="navbar navbar-expand-lg">
+      <div class="container">
+          <a class="navbar-brand" href="/">
+            <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+            Logo
+          </a>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+              aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                      <a href="/" class="nav-link">Home</a>
+                  </li>
+
+                  {% if session.admin %}
+                  <li class="nav-item">
+                    <a href="/dashboard" class="nav-link smoothScroll">Dashboard</a>
+                  {% endif %}
+                  
+                  <li class="nav-item">
+                    <a data-toggle="dropdown" id="navbarDropdownMenuLink" href="solutions.html" class="nav-link">Local Solutions
+                         <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="/covidprojects">Solutions on Covid-19</a></li>
+                      <li><a href="/climateprojects">Solutions on Climate</a></li>
+                      <li><a href="/solutionsprojects">Solutions on Youth</a></li>
+                      <li><a href="/miscprojects">Miscellaneous</a></li>
+
+                    </ul>
+               </li>
+                    {% if session.email %}
+                  <li class="nav-item">
+                    <a href="/logout" class="nav-link contact">Logout</a>
+                  </li>
+                  {% else %}
+                  <li class="nav-item">
+                    <a href="/login" class="nav-link contact">Login</a>
+                  </li>
+                  {% endif %}
+              </ul>
+          </div>
+      </div>
+  </nav>
+
+     <!-- submission page-->
+     <section class="contact section-padding">
+          <div class="container" width:100%>
+               <div class="row">
+                  
+                    <div class="col-lg-6 mx-auto col-md-7 col-12 py-3 mt-3 text-center" >
+                      <h1 class="submit">Submit a <strong>Local Solution</strong></h1>
+                      <p></p>
+                    </div>
+
+                    <div class="col-lg-12 mx-auto col-md-10 col-12">
+                    
+                      <form action="/newsolution" method="POST" class="submission-form"  role="form" enctype="multipart/form-data">
+                        <div class="row">
+
+                          <div class="field col-lg-6 col-12">
+                            <label for="name">Local Solution's Name</label>
+                            <input name="local_solution_name" type="text" class="form-control" id="name" placeholder="">
+                          </div>
+
+                          <div class="field col-lg-6 col-12">
+                            <label for="id">Owner's Name</label>
+                            <input name="owner_name" type="text" class="form-control" id="id" placeholder="">
+                          </div>
+
+                          <!-- this needs to show the placeholder/selected text -->
+                          <div class="field col-lg-6 col-12">
+                            <label for="type">Type of the Local Solution</label>
+                            <select name="type_of_the_local_solution" class="form-control" id="type" placeholder="Type of the Local Solution">
+                              <option selected> </option>
+                              <option value="covid">covid</option>
+                              <option value="climate">climate</option>
+                              <option value="solution">solution</option>
+                              <option value="miscellaneous">miscellaneous</option> </select>
+                          </div>
+
+                          <!-- this needs to show the placeholder/selected text -->
+                          <div class="field col-lg-6 col-12">
+
+                            <label for="Province">Province of the Local Solution</label>
+                            <select name="province_of_the_local_solution" class="form-control" id="Province" placeholder="Province of the Local Solution">
+                              <option selected> </option>
+                              <option value="Province">Baghdad</option> 
+                              <option value="Province">Anbar</option> 
+                              <option value="Province">Babil</option> 
+                              <option value="Province">Basrah</option> 
+                              <option value="Province">Dahuk</option> 
+                              <option value="Province">Dhi Qar</option> 
+                              <option value="Province">Diyala</option> 
+                              <option value="Province">Erbil</option> 
+                              <option value="Province">Halabja</option> 
+                              <option value="Province">Karbala'</option>
+                              <option value="province">Kirkuk</option>
+                              <option value="province">Maysan</option>
+                              <option value="province">Muthanna</option>
+                              <option value="province">Najaf</option>
+                              <option value="province">Ninawa</option>
+                              <option value="province">Qadisiyah</option>
+                              <option value="province">Salah ad-Din	</option>
+                              <option value="province">Wasit</option>
+                            </select>
+                          </div>
+
+                          <div class="field col-lg-6 col-12">
+                            <label for="date">Date of Finding the Local Solution</label>
+                            <input name="date_of_finding_the_local_solution" type="date" class="form-control" id="date" placeholder="Date of Finding the Local Solution">
+                          </div>
+
+                          <!-- this needs to show the placeholder/selected text -->
+                          <div class="field col-lg-6 col-12">
+                            <label for="stage">Current Stage of the Local Solution</label>
+                            <select name="stage_of_the_local_solution" class="form-control" id="Stage" placeholder="">
+                              <option selected> </option>
+                              <option value="Province">Just an Idea</option> 
+                              <option value="Province">Prototype</option> 
+                              <option value="Province">Testing Stage</option> 
+                              <option value="Province">Implementation Stage</option> 
+                              <option value="Province">Other</option> 
+                            </select>
+                          </div>
+                          <!-- 
+                            <label for="stage">Select the SDGs that apply to it</label>
+                              <select class="form-control" name="sdgs" id="sdgs" multiple>
+                              <option selected> </option>
+                              <option value="Province">Just an Idea</option> 
+                              <option value="Province">Prototype</option> 
+                              <option value="Province">Testing Stage</option> 
+                              <option value="Province">Implementation Stage</option> 
+                              <option value="Province">Other</option> 
+                            </select>
+                          </div> -->
+
+                          <!-- <div class="field col-lg-6 col-12">
+                            <label for="SDGs">Select the SDGs that apply to it</label>
+                          <select class="form-control" id="SDGs" name="SDGs" multiple="" >
+                            <option value="">SDGs</option>
+                          <option value="angular">Angular</option>
+                          <option value="css">CSS</option>
+                          <option value="design">Graphic Design</option>
+                          <option value="ember">Ember</option>
+                          <option value="html">HTML</option>
+                          <option value="ia">Information Architecture</option>
+                          <option value="javascript">Javascript</option>
+                          <option value="mech">Mechanical Engineering</option>
+                          <option value="meteor">Meteor</option>
+                          <option value="node">NodeJS</option>
+                          <option value="plumbing">Plumbing</option>
+                          <option value="python">Python</option>
+                          <option value="rails">Rails</option>
+                          <option value="react">React</option>
+                          <option value="repair">Kitchen Repair</option>
+                          <option value="ruby">Ruby</option>
+                          <option value="ui">UI Design</option>
+                          <option value="ux">User Experience</option>
+                          </select></div> -->
+ 
+                          <!-- <div class="field col-lg-6 col-12">
+                          <form action="http://httpbin.org/post" method="post">
+                            <label for="SDGs">Select the SDGs that apply to it</label>
+                            <select  class="form-control" name="test">
+                              <option value=""></option>
+                              <option>American Black Bear</option>
+                              <option>Asiatic Black Bear</option>
+                              <option>Brown Bear</option>
+                              <option>Giant Panda</option>
+                              <option>Sloth Bear</option>
+                              <option>Sun Bear</option>
+                              <option>Polar Bear</option>
+                              <option>Spectacled Bear</option>
+                            </select>
+                          </form>
+                          </div>  -->
+
+                       
+                          <div class="field col-lg-6 col-12">
+                            <label for="parent-institution">Parent Institution</label>
+                            <input name="institution" type="text" class="form-control" id="parent-institution" placeholder="">
+                          </div>
+
+                          <div class="field col-lg-6 col-12">
+                            <label for="phone">Phone number</label>
+                            <input name="phone_number" type="number" class="form-control" id="phone" placeholder="">
+                          </div>
+
+                          <div class="field col-lg-6 col-12">
+                            <label for="email">Email</label>
+                            <input name="email" type="email" class="form-control" id="email" placeholder="">
+                          </div>
+
+
+                          <div class="field col-lg-6 col-12">
+                            <label for="area">Working Area of the Local Solution</label>
+
+                            <input name="working_area_of_the_local_solution" type="text" class="form-control" id="area" placeholder="">
+                          </div>
+
+                          <div class="field col-lg-6 col-12">
+                            <label for="institution">Institutions the Solution is Implemented at</label>
+                            <input name="institutions_the_solution_is_implemented_at" type="text" class="form-control" id="institution" placeholder="">
+                          </div>
+ 
+                          <div class="field col-lg-6 col-12">
+                            <label for="partners">Current Partners of the Local Solution</label>
+                            <input name="current_partners_of_the_solution" type="text" class="form-control" id="partners" placeholder="">
+                          </div>
+
+                          <div class="field col-lg-12 col-12">
+                            <label for="message">Local Solution’s Description</label>
+                            <textarea name="local_solution_description" class="form-control" rows="3" id="message" placeholder=""></textarea>
+                          </div>
+                          <div class="field col-lg-12 col-12">
+                            <label for="requirements">Local Solution’s Requirements</label>
+                            <textarea name="local_solution_requirements" class="form-control" rows="3" id="requirements" placeholder=""></textarea>
+                          </div>
+
+                          <div class="field col-lg-12 col-12">
+                            <label for="links">Social Media links</label>
+                            <textarea name="social_media_links" class="form-control" rows="3" id="links" placeholder=""></textarea>
+                          </div>
+
+                          <div class="field col-lg-12 col-12">
+                            <label for="links"><br>Select the SDGs That Apply to the Local Solution</label>
+                            <ul>
+  <style>
+  ul {
+    list-style-type: none;
+  }
+  
+  li {
+    display: inline-block;
+  }
+  
+  input[type="checkbox"][id^="sdg"] {
+    display: none;
+  }
+  
+  label {
+    border: 1px solid #fff;
+    padding: 10px;
+    display: block;
+    position: relative;
+    margin: 10px;
+    cursor: pointer;
+  }
+  
+  label:before {
+    background-color: white;
+    color: white;
+    content: " ";
+    display: block;
+    border-radius: 50%;
+    border: 1px solid grey;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: 28px;
+    transition-duration: 0.4s;
+    transform: scale(0);
+  }
+  
+  label img {
+    height: 100px;
+    width: 100px;
+    transition-duration: 0.2s;
+    transform-origin: 50% 50%;
+  }
+  
+  :checked + label {
+    border-color: #ddd;
+  }
+  
+  :checked + label:before {
+    content: "✓";
+    background-color: grey;
+    transform: scale(1);
+  }
+  
+  :checked + label img {
+    transform: scale(0.9);
+     box-shadow: 0 0 5px #333; 
+    z-index: -1;
+  }</style>
+<li>
+  <input name="sdg1" type="checkbox" id="sdg1" value="1"/>
+  <label for="sdg1"><img src="../static/images/E-WEB-Goal-01.png" /></label>
+</li>
+<li>
+  <input name="sdg2" type="checkbox" id="sdg2" value="1"/>
+  <label for="sdg2"><img src="../static/images/E-WEB-Goal-02.png" /></label>
+</li>
+<li>
+  <input name="sdg3" type="checkbox" id="sdg3" value="1"/>
+  <label for="sdg3"><img src="../static/images/health.png" /></label>
+</li>
+<li>
+  <input name="sdg4" type="checkbox" id="sdg4" value="1"/>
+  <label for="sdg4"><img src="../static/images/E-WEB-Goal-04.png" /></label>
+</li>
+<li>
+  <input name="sdg5" type="checkbox" id="sdg5" value="1"/>
+  <label for="sdg5"><img src="../static/images/E-WEB-Goal-05.png" /></label>
+</li>
+<li>
+  <input name="sdg6" type="checkbox" id="sdg6" value="1"/>
+  <label for="sdg6"><img src="../static/images/E-WEB-Goal-06.png" /></label>
+</li>
+<li>
+  <input name="sdg7" type="checkbox" id="sdg7" value="1"/>
+  <label for="sdg7" ><img src="../static/images/E-WEB-Goal-07.png" /></label>
+</li>
+<li>
+  <input name="sdg8" type="checkbox" id="sdg8" value="1"/>
+  <label for="sdg8"><img src="../static/images/E_WEB_08.png" /></label>
+</li>
+<li>
+  <input name="sdg9" type="checkbox" id="sdg9" value="1"/>
+  <label for="sdg9"><img src="../static/images/E-WEB-Goal-09.png" /></label>
+</li>
+<li>
+  <input name="sdg10" type="checkbox" id="sdg10" value="1"/>
+  <label for="sdg10"><img src="../static/images/E-WEB-Goal-10.png" /></label>
+</li>
+<li>
+  <input name="sdg11" type="checkbox" id="sdg11" value="1"/>
+  <label for="sdg11"><img src="../static/images/E-WEB-Goal-11.png" /></label>
+</li>
+<li>
+  <input name="sdg12" type="checkbox" id="sdg12" value="1"/>
+  <label for="sdg12"><img src="../static/images/E-WEB-Goal-12.png" /></label>
+</li>
+<li>
+  <input name="sdg13" type="checkbox" id="sdg13" value="1"/>
+  <label for="sdg13"><img src="../static/images/E_WEB_13.png" /></label>
+</li>
+<li>
+  <input name="sdg14" type="checkbox" id="sdg14" value="1"/>
+  <label for="sdg14"><img src="../static/images/E-WEB-Goal-14.png" /></label>
+</li>
+<li>
+  <input name="sdg15" type="checkbox" id="sdg15" value="1"/>
+  <label for="sdg15"><img src="../static/images/E-WEB-Goal-15.png" /></label>
+</li>
+<li>
+  <input name="sdg16" type="checkbox" id="sdg16" value="1"/>
+  <label for="sdg16"><img src="../static/images/E-WEB-Goal-16.png" /></label>
+</li>
+<li>
+  <input name="sdg17" type="checkbox" id="sdg17" value="1"/>
+  <label for="sdg17"><img src="../static/images/E-WEB-Goal-17.png" /></label>
+</li>
+  
+</ul> 
+
+                          <div class="field text-center col-lg-12 col-12">
+                            <label for="image">Upload an Image of the Local Solution In-Action</label>
+                            <input name="image_of_local_solution" type="file" class="file-control" id="image">
+                          </div>
+
+                          <div class="col-lg-5 mx-auto mt-3 mb-4 col-7">
+                            <button type="submit" class="form-control" id="submit-button" name="submit">SUBMIT</button>
+                          </div>
+                        </div>
+
+                      </form>
+                    </div>
+
+               </div>
+          </div>
+     </section>
+
+
+     <!-- footer  -->
+     <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-5 mx-lg-auto col-md-8 col-10 mt-3" >
+            <h1 class="text-white" data-aos="fade-up" data-aos-delay="100" >Solutions Safari <strong>Endless</strong> Possibilities.</h1>
+          </div>
+
+          <div class="col-lg-3 col-md-6 col-12" data-aos="fade-up" data-aos-delay="100">
+            <h4 class="my-4" >CONTACT INFO</h4>
+
+            <p class="mb-1" >
+               <i class="fa fa-phone mr-2 footer-icon"></i>  
+              <a href="#">number</a>
+            </p>
+
+            <p><a href="">
+                <i class="fa fa-envelope mr-2 footer-icon"></i> 
+                Email
+              </a></p>
+          </div>
+
+          <div class="col-lg-4 mx-lg-auto text-center col-md-8 col-12" data-aos="fade-up" data-aos-delay="300" >
+            <h4><br>WHO ARE WE?</h4>
+            <p><a href="#">
+                An online platform where you share an innovative solution and we sense and explore, experiment, and scale it up.
+           </a></p>
+            <!-- <p><a href="https://www.iq.undp.org/content/iraq/en/home.html">UNDP-Iraq</a>
+                      <br><a href="https://acceleratorlabs.undp.org/">Accelerator Lab</a> 
+                     <br><a href="https://www.iq.undp.org/content/iraq/en/home/accelerator-labs.html">Accelerator Lab-Iraq</a>
+                     <br><a href="https://acceleratorlabs.undp.org/content/acceleratorlabs/en/home/blogs.html?tagid=regions%20and%20countries:arab%20states/iraq,language:English">Our Blogs</a></p> -->
+           </div>
+ 
+
+          <div class="col-lg-3 mx-lg-auto col-md-6 col-12" data-aos="fade-up" data-aos-delay="400">
+            <ul class="social-icon">
+              <li><a href="#" class="fa fa-instagram"></a></li>
+              <li><a href="" class="fa fa-twitter"></a></li>
+              <li><a href="" class="fa fa-facebook"></i></a></li>
+              <li><a href="" class="fa fa-youtube"></i></a></li>
+            </ul>
+          </div>
+          <!-- https://www.instagram.com/acceleratorlabs/?hl=en
+          https://twitter.com/UNDPAccLabs?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor
+          https://www.facebook.com/undpiniraq/
+          https://www.youtube.com/watch?v=n_oZYg0eyOI&t=2s -->
+        </div>
+      </div>
+    </footer>
+
+     <!-- SCRIPTS -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <script src="../static/js/bootstrap.min.js"></script>
+     <script src="../static/js/aos.js"></script>
+     <script src="../static/js/owl.carousel.min.js"></script>
+     <script src="../static/js/custom.js"></script>
+     <script src="../static/js.js"></script>
+<script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
+
+</body>
+</html>

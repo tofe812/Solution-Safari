@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+     <title>Solutions Safari</title>
+
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+     <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+     <link rel="stylesheet" href="../static/css/font-awesome.min.css">
+     <link rel="stylesheet" href="../static/css/aos.css"> 
+     <link rel="stylesheet" href="../static/css/owl.carousel.min.css"> 
+     <link rel="stylesheet" href="../static/css/owl.theme.default.min.css">
+     <link rel="stylesheet" href="../static/style.css">
+
+</head>
+<body>
+
+     <!-- MENU BAR -->
+    <nav class="navbar navbar-expand-lg ">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+               <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+              Logo
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="/" class="nav-link smoothScroll">Home</a>
+                    </li>
+
+                    <!-- <li class="nav-item">
+                        <a href="solutions.html" class="nav-link">Local Solutions</a>
+                    </li> -->
+                    {% if session.admin %}
+                  <li class="nav-item">
+                    <a href="/dashboard" class="nav-link smoothScroll">Dashboard</a>
+                  {% endif %}
+                    
+                    <li class="nav-item">
+                         <a data-toggle="dropdown" id="navbarDropdownMenuLink" href="solutions.html" class="nav-link">Local Solutions
+                              <span class="caret"></span></a>
+                         <ul class="dropdown-menu">
+                           <li><a href="/covidprojects">Solutions on Covid-19</a></li>
+                           <li><a href="/climateprojects">Solutions on Climate</a></li>
+                           <li><a href="/solutionsprojects">Solutions on Youth</a></li>
+                           <li><a href="/miscprojects">Miscellaneous</a></li>
+
+                         </ul>
+                    </li>
+
+                    
+                    {% if session.email %}
+                  <li class="nav-item">
+                    <a href="/logout" class="nav-link contact">Logout</a>
+                  </li>
+                  {% else %}
+                  <li class="nav-item">
+                    <a href="/login" class="nav-link contact">Login</a>
+                  </li>
+                  {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+     <!-- Main body -->
+     <section class="hero hero-bg d-flex justify-content-center align-items-center">
+               <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-6 col-md-10 col-12 d-flex flex-column justify-content-center align-items-center">
+                              <div class="hero-text">
+
+                                   <h1 class="text-white" data-aos="fade-up" >Iraqi Solutions Safari <br>Endless Possibilities</h1>
+
+                                   <a href="/newsolution" class="custom-btn btn-bg btn mt-3" data-aos="fade-up" data-aos-delay="100">Submit a Solution!</a>
+
+                                   <!-- <strong class="d-block py-3 pl-5 text-white" "200"><i class="fas fa-lightbulb"></i> </strong> -->
+                              </div>
+                        </div>
+
+                        <div class="col-lg-6 col-12">
+                          <div class="hero-image" data-aos="fade-up" data-aos-delay="300">
+
+                            <img src="../static/images/Notes-cuate.svg" class="img-fluid" alt="working girl">
+                          </div>
+                        </div>
+
+                    </div>
+               </div>
+     </section>
+
+
+     <!-- ABOUT/HOME -->
+     <section class="about section-padding pb-0" id="about">
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-lg-7 mx-auto col-md-10 col-12">
+                         <div class="about-info">
+
+                              <h2 class="mb-4" style="font-weight: 500;" data-aos="fade-up">Solutions Safari<strong style="font-weight: 500;"> Iraq</strong> </h2>
+
+                              <p class="mb-0" data-aos="fade-up" >
+                              We are the first-of-its-kind online platform that makes it possible for anyone (yes, anyone!) to share an innovative solution related to the challenges Iraq is currently faced with: <strong style="font-weight: 500;">Youth and Unemployment</strong>, <strong style="font-weight: 500;">Covid-19</strong> and <strong style="font-weight: 500;">Climate Change</strong>. 
+                              <br><br> We also enable stakeholders to gain access into an all-encompassing data base that cumulates all such solutions, in order to facilitate the processes of <strong style="font-weight: 500;">Sensing and Exploring</strong>, <strong style="font-weight: 500;">Experimenting</strong>, and <strong style="font-weight: 500;">Scaling up </strong>of innovation.</p>
+                         </div>
+
+                         <div class="about-image" data-aos="fade-up" data-aos-delay="150">
+
+                          <img src="../static/images/Brainstorming-cuate.svg" class="img-fluid" alt="office">
+                        </div>
+                    </div>
+
+               </div>
+          </div>
+     </section>
+
+
+     <!-- featured solutions via owl carousel -->
+     <section class="project section-padding" id="project">
+          <div class="container-fluid">
+               <div class="row">
+
+                    <div class="col-lg-12 col-12">
+
+                        <h2 class="mb-5 text-center" data-aos="fade-up">
+                            Take a Tour Through Our
+                            <br><strong>Featured Local Solutions</strong>
+                        </h2>
+
+                         <div class="owl-carousel owl-theme" id="project-slide">
+                              {% for post in roster %}
+                              <div class="item project-wrapper" data-aos="fade-up" data-aos-delay="100">
+                                   <img src={{post["image_of_local_solution"]}} class="img-fluid" alt="project image">
+
+                                   <div class="project-info">
+                                        <small>{{ post["local_solution_description"] }}</small>
+
+                                        <h3>
+                                             <a href="#">
+                                                  <span>{{ post["local_solution_name"] }}</span>
+                                                  <i class="fa fa-angle-right project-icon"></i>
+                                             </a>
+                                        </h3>
+                                   </div>
+                              </div>
+                              {% endfor %}
+                         </div>
+                    </div>
+
+               </div>
+          </div>
+     </section>
+
+     
+ 
+
+     <!-- footer  -->
+     <footer class="site-footer">
+          <div class="container">
+            <div class="row">
+    
+              <div class="col-lg-5 mx-lg-auto col-md-8 col-10 mt-3" >
+                <h1 class="text-white" data-aos="fade-up" data-aos-delay="100" >Solutions Safari <strong>Endless</strong> Possibilities.</h1>
+              </div>
+    
+              <div class="col-lg-3 col-md-6 col-12" data-aos="fade-up" data-aos-delay="100">
+                <h4 class="my-4" >CONTACT INFO</h4>
+    
+                <p class="mb-1" >
+                   <i class="fa fa-phone mr-2 footer-icon"></i>  
+                  <a href="#">number</a>
+                </p>
+    
+                <p><a href="">
+                    <i class="fa fa-envelope mr-2 footer-icon"></i> 
+                    Email
+                  </a></p>
+              </div>
+    
+              <div class="col-lg-4 mx-lg-auto text-center col-md-8 col-12" data-aos="fade-up" data-aos-delay="200" >
+                <h4><br>WHO ARE WE?</h4>
+                <p><a href="#">
+                    An online platform where you share an innovative solution and we sense and explore, experiment, and scale it up.
+               </a></p>
+                <!-- <p><a href="https://www.iq.undp.org/content/iraq/en/home.html">UNDP-Iraq</a>
+                          <br><a href="https://acceleratorlabs.undp.org/">Accelerator Lab</a> 
+                         <br><a href="https://www.iq.undp.org/content/iraq/en/home/accelerator-labs.html">Accelerator Lab-Iraq</a>
+                         <br><a href="https://acceleratorlabs.undp.org/content/acceleratorlabs/en/home/blogs.html?tagid=regions%20and%20countries:arab%20states/iraq,language:English">Our Blogs</a></p> -->
+               </div>
+     
+    
+              <div class="col-lg-3 mx-lg-auto col-md-6 col-12" data-aos="fade-up" data-aos-delay="200">
+                <ul class="social-icon">
+                  <li><a href="#" class="fa fa-instagram"></a></li>
+                  <li><a href="" class="fa fa-twitter"></a></li>
+                  <li><a href="" class="fa fa-facebook"></i></a></li>
+                  <li><a href="" class="fa fa-youtube"></i></a></li>
+                </ul>
+              </div>
+              <!-- https://www.instagram.com/acceleratorlabs/?hl=en
+              https://twitter.com/UNDPAccLabs?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor
+              https://www.facebook.com/undpiniraq/
+              https://www.youtube.com/watch?v=n_oZYg0eyOI&t=2s -->
+            </div>
+          </div>
+        </footer>
+    
+    
+        <!-- <script>
+          function toggleZoomScreen() {
+              document.body.style.zoom = "80%";
+          } 
+       </script> -->
+     <!-- java script -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>    
+      <script src="../static/js/bootstrap.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+     <script src="../static/js/owl.carousel.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.10/SmoothScroll.js"></script>
+     <!-- https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.10/SmoothScroll.js -->
+     <script src="../static/js/custom.js"></script> 
+
+</body>
+</html>

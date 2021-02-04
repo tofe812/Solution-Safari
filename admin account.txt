@@ -1,0 +1,4 @@
+email:
+admin@solution.com
+password:
+12345678

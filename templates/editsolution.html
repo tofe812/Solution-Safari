@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+     <title>Submission Form</title>
+
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <!-- <meta name="description" content="">
+     <meta name="keywords" content="">
+     <meta name="author" content=""> -->
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+     <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+     <link rel="stylesheet" href="../static/css/font-awesome.min.css">
+     <link rel="stylesheet" href="../static/css/aos.css">
+     <link rel="stylesheet" href="../static/css/owl.carousel.min.css">
+     <link rel="stylesheet" href="../static/css/owl.theme.default.min.css">
+     <link rel="stylesheet" href="../static/style.css">
+     <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet"/>
+     
+
+</head>
+<body>
+
+     <!-- MENU BAR. same in all pages-->
+     <nav class="navbar navbar-expand-lg">
+      <div class="container">
+          <a class="navbar-brand" href="/">
+            <i class="fa fa-lightbulb-o" aria-hidden="true"></i>            Logo
+          </a>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+              aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                      <a href="/" class="nav-link">Home</a>
+                  </li>
+
+                  {% if session.admin %}
+                  <li class="nav-item">
+                    <a href="/dashboard" class="nav-link smoothScroll">Dashboard</a>
+                  {% endif %}
+
+                  <li class="nav-item">
+                    <a data-toggle="dropdown" id="navbarDropdownMenuLink" href="solutions.html" class="nav-link">Local Solutions
+                         <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="/covidprojects">Solutions on Covid-19</a></li>
+                      <li><a href="/climateprojects">Solutions on Climate</a></li>
+                      <li><a href="/solutionsprojects">Solutions on Youth</a></li>
+                      <li><a href="/miscprojects">Miscellaneous</a></li>
+
+                    </ul>
+               </li>
+                    {% if session.email %}
+                  <li class="nav-item">
+                    <a href="/logout" class="nav-link contact">Logout</a>
+                  </li>
+                  {% else %}
+                  <li class="nav-item">
+                    <a href="/login" class="nav-link contact">Login</a>
+                  </li>
+                  {% endif %}
+              </ul>
+          </div>
+      </div>
+  </nav>
+
+     <!-- submission page-->
+     <section class="contact section-padding">
+          <div class="container" width:100%>
+               <div class="row">
+                  
+                    <div class="col-lg-6 mx-auto col-md-7 col-12 py-3 mt-3 text-center" >
+                      <h1 class="submit">Edit a <strong>Local Solution</strong></h1>
+                      <p></p>
+                    </div>
+
+                    <div class="col-lg-12 mx-auto col-md-10 col-12">
+                    
+                      <form action="#" method="post" class="submission-form"  role="form">
+                        <div class="row">
+
+                          <div class="field col-lg-6 col-12">
+                            <label for="name">Local Solution's Name</label>
+                            <input type="text" class="form-control" id="name" value="CS50xIraq">
+                            
+                          </div>
+
+                          <div class="field col-lg-6 col-12">
+                            <label for="id">Owner's Name</label>
+                            <input type="text" class="form-control" id="id" value="CS50x">
+                          </div>
+
+                          <!-- this needs to show the value/selected text -->
+                          <div class="field col-lg-6 col-12">
+                            <label for="type">Type of the Local Solution</label>
+                            <select class="form-control" id="type" value="Type of the Local Solution">
+                              <option selected>Service </option>
+                              <option value="Service">Service</option>
+                              <option value="Product">Product</option>
+                              <option value="Other">Other</option> </select>
+                          </div>
+
+                          <!-- this needs to show the value/selected text -->
+                          <div class="field col-lg-6 col-12">
+
+                            <label for="Province">Province of the Local Solution</label>
+                            <select class="form-control" id="Province" value="Province of the Local Solution">
+                              <option selected> Baghdad</option>
+                              <option value="Province">Baghdad</option> 
+                              <option value="Province">Anbar</option> 
+                              <option value="Province">Babil</option> 
+                              <option value="Province">Basrah</option> 
+                              <option value="Province">Dahuk</option> 
+                              <option value="Province">Dhi Qar</option> 
+                              <option value="Province">Diyala</option> 
+                              <option value="Province">Erbil</option> 
+                              <option value="Province">Halabja</option> 
+                              <option value="Province">Karbala'</option>
+                              <option value="province">Kirkuk</option>
+                              <option value="province">Maysan</option>
+                              <option value="province">Muthanna</option>
+                              <option value="province">Najaf</option>
+                              <option value="province">Ninawa</option>
+                              <option value="province">Qadisiyah</option>
+                              <option value="province">Salah ad-Din	</option>
+                              <option value="province">Wasit</option>
+                              <option value="Province">Across Iraq</option>
+                            </select>
+                          </div>
+
+                          <div class="field col-lg-6 col-12">
+                            <label for="date">Date of Finding the Local Solution</label>
+                            <input type="date" class="form-control" id="date" value="25/09/2020">
+                          </div>
+
+                          <div class="field col-lg-6 col-12">
+                            <label for="stage">Current Stage of the Local Solution</label>
+                            <select class="form-control" id="Stage" value="">
+                              <option selected>Implementation Stage</option>
+                              <option value="Province">Just an Idea</option> 
+                              <option value="Province">Prototype</option> 
+                              <option value="Province">Testing Stage</option> 
+                              <option value="Province">Implementation Stage</option> 
+                              <option value="Province">Other</option> 
+                            </select>
+                          </div>
+                       
+                          <div class="field col-lg-6 col-12">
+                            <label for="parent-institution">Parent Institution</label>
+                            <input type="text" class="form-control" id="parent-institution" value="Independent">
+                          </div>
+
+                          <div class="field col-lg-6 col-12">
+                            <label for="phone">Phone number</label>
+                            <input type="number" class="form-control" id="phone" value="+9647721112233" placeholder="+9647721112233">
+                          </div>
+
+                          <div class="field col-lg-6 col-12">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" value="CS50x@awesome.com">
+                          </div>
+
+
+                          <div class="field col-lg-6 col-12">
+                            <label for="area">Working Area of the Local Solution</label>
+
+                            <input type="text" class="form-control" id="area" value="capacity building">
+                          </div>
+
+                          <div class="field col-lg-6 col-12">
+                            <label for="institution">Institutions the Solution is Implemented at</label>
+                            <input type="text" class="form-control" id="institution" value="the Station, University of Technology ">
+                          </div>
+ 
+                          <div class="field col-lg-6 col-12">
+                            <label for="partners">Current Partners of the Local Solution</label>
+                            <input type="text" class="form-control" id="partners" value="UNDP-Iraq, Earthlink">
+                          </div>
+
+                          <div class="field col-lg-6 col-12">
+                            <label for="partners">Who are the potential partners?</label>
+                            <input class="form-control" rows="3" id="partners" value="Injaz, D3 studios, Engineering Universities"></textarea>
+                          </div>
+                          <div class="field col-lg-6 col-12">
+                            <label for="stage">What is the Status of working on this local solution?</label>
+                            <select class="form-control" id="Stage" value="">
+                              <option selected>Scaling Up Stage</option>
+                              <option value="Province">Sensing and Exploring stage</option> 
+                              <option value="Province">Experimenting Stage</option> 
+                              <option value="Province">Scaling Up Stage</option> 
+                              <option value="Province">Done</option> 
+                            </select>
+                          </div>
+                          <div class="field col-lg-12 col-12">
+                            <label for="message">Local Solution’s Description</label>
+                            <textarea class="form-control" rows="3" id="message" value="An introductory course to computer science"></textarea>
+                          </div>
+                          <div class="field col-lg-12 col-12">
+                            <label for="requirements">Local Solution’s Requirements</label>
+                            <textarea class="form-control" rows="3" id="requirements" value="More funding to be able to reach a wider audience"></textarea>
+                          </div>
+
+                          <div class="field col-lg-12 col-12">
+                            <label for="links">Social Media links:</label>
+                            <textarea class="form-control" rows="3" id="links" value="@cs50x-iraq on facebook and instagram"></textarea>
+                          </div>
+                          <div class="field col-lg-12 col-12">
+                            <label for="whythis">Why it is important for the Accelerator Lab to work with this Local Solution? </label>
+                            <textarea class="form-control" rows="3" id="whythis" value=""></textarea>
+                          </div>
+                          <div class="field col-lg-12 col-12">
+                            <label for="support">How the Accelerator Lab will support this solution?  </label>
+                            <textarea class="form-control" rows="3" id="support" value=""></textarea>
+                          </div>
+                          <div class="field col-lg-12 col-12">
+                            <label for="ourplan">What is the Plan for the Accelerator Lab to Scale this Local Solution? </label>
+                            <textarea class="form-control" rows="3" id="ourplan" value=""></textarea>
+                          </div>
+                          <div class="field col-lg-12 col-12">
+                            <label for="publications">Publications on the local solution (blog, Media, social media posts .. etc.)</label>
+                            <textarea class="form-control" rows="3" id="publications" value=""></textarea>
+                          </div>
+                          <div class="field col-lg-12 col-12">
+                            <label for="links"><br>Select the SDGs That Apply to the Local Solution:</label>
+                            <ul>
+  <style>
+  ul {
+    list-style-type: none;
+  }
+  
+  li {
+    display: inline-block;
+  }
+  
+  input[type="checkbox"][id^="myCheckbox"] {
+    display: none;
+  }
+  
+  label {
+    border: 1px solid #fff;
+    padding: 10px;
+    display: block;
+    position: relative;
+    margin: 10px;
+    cursor: pointer;
+  }
+  
+  label:before {
+    background-color: white;
+    color: white;
+    content: " ";
+    display: block;
+    border-radius: 50%;
+    border: 1px solid grey;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: 28px;
+    transition-duration: 0.4s;
+    transform: scale(0);
+  }
+  
+  label img {
+    height: 100px;
+    width: 100px;
+    transition-duration: 0.2s;
+    transform-origin: 50% 50%;
+  }
+  
+  :checked + label {
+    border-color: #ddd;
+  }
+  
+  :checked + label:before {
+    content: "✓";
+    background-color: grey;
+    transform: scale(1);
+  }
+  
+  :checked + label img {
+    transform: scale(0.9);
+     box-shadow: 0 0 5px #333; 
+    z-index: -1;
+  }</style>
+  <li>
+    <input type="checkbox" id="myCheckbox1" />
+    <label for="myCheckbox1"><img src="../static/images/E-WEB-Goal-01.png" /></label>
+  </li>
+  <li>
+    <input type="checkbox" id="myCheckbox2" />
+    <label for="myCheckbox2"><img src="../static/images/E-WEB-Goal-02.png" /></label>
+  </li>
+  <li>
+    <input type="checkbox" id="myCheckbox3" />
+    <label for="myCheckbox3"><img src="../static/images/health.png" /></label>
+  </li>
+  <li>
+    <input type="checkbox" id="myCheckbox4" />
+    <label for="myCheckbox4"><img src="../static/images/E-WEB-Goal-04.png" /></label>
+  </li>
+  <li>
+    <input type="checkbox" id="myCheckbox5" />
+    <label for="myCheckbox5"><img src="../static/images/E-WEB-Goal-05.png" /></label>
+  </li>
+  <li>
+    <input type="checkbox" id="myCheckbox6" />
+    <label for="myCheckbox6"><img src="../static/images/E-WEB-Goal-06.png" /></label>
+  </li>
+  <li>
+    <input type="checkbox" id="myCheckbox7" />
+    <label for="myCheckbox7"><img src="../static/images/E-WEB-Goal-07.png" /></label>
+  </li>
+  <li>
+    <input type="checkbox" id="myCheckbox8" />
+    <label for="myCheckbox8"><img src="../static/images/E_WEB_08.png" /></label>
+  </li>
+  <li>
+    <input type="checkbox" id="myCheckbox9" />
+    <label for="myCheckbox9"><img src="../static/images/E-WEB-Goal-09.png" /></label>
+  </li>
+  <li>
+    <input type="checkbox" id="myCheckbox10" />
+    <label for="myCheckbox10"><img src="../static/images/E-WEB-Goal-10.png" /></label>
+  </li>
+  <li>
+    <input type="checkbox" id="myCheckbox11" />
+    <label for="myCheckbox11"><img src="../static/images/E-WEB-Goal-11.png" /></label>
+  </li>
+  <li>
+    <input type="checkbox" id="myCheckbox12" />
+    <label for="myCheckbox12"><img src="../static/images/E-WEB-Goal-12.png" /></label>
+  </li>
+  <li>
+    <input type="checkbox" id="myCheckbox13" />
+    <label for="myCheckbox13"><img src="../static/images/E_WEB_13.png" /></label>
+  </li>
+  <li>
+    <input type="checkbox" id="myCheckbox14" />
+    <label for="myCheckbox14"><img src="../static/images/E-WEB-Goal-14.png" /></label>
+  </li>
+  <li>
+    <input type="checkbox" id="myCheckbox15" />
+    <label for="myCheckbox15"><img src="../static/images/E-WEB-Goal-15.png" /></label>
+  </li>
+  <li>
+    <input type="checkbox" id="myCheckbox16" />
+    <label for="myCheckbox16"><img src="../static/images/E-WEB-Goal-16.png" /></label>
+  </li>
+  <li>
+    <input type="checkbox" id="myCheckbox17" />
+    <label for="myCheckbox17"><img src="../static/images/E-WEB-Goal-17.png" /></label>
+  </li>
+  
+</ul>
+
+                          <!-- <div class="field text-center col-lg-12 col-12">
+                            <label for="file">Upload an Image of the Local Solution In-Action</label>
+                            <input type="file" class="file-control" id="file" name="upload">
+                          </div> -->
+                          <div class="col-lg-5 mx-auto mt-3 mb-4 col-7" style="text-align: center; font-size: larger;">
+                            
+                           <label>
+                            <input type="checkbox" name="radio" />
+                            Approve the Solution to be Published 
+                          </label> 
+                          <!-- <input type="checkbox" id="switch"
+                    class="checkbox" /> 
+        <label for="switch" class="toggle"> 
+            <p>OFF    ON</p> 
+        </label>  -->
+        
+                        </div>
+
+                          <div class="col-lg-5 mx-auto mt-3 mb-4 col-7">
+                            <button type="submit" class="form-control" id="submit-button" name="submit">SUBMIT</button>
+                          </div>
+                        </div>
+
+                      </form>
+                    </div>
+
+               </div>
+          </div>
+     </section>
+
+
+     <!-- footer  -->
+     <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-5 mx-lg-auto col-md-8 col-10 mt-3" >
+            <h1 class="text-white" data-aos="fade-up" data-aos-delay="100" >Solutions Safari <strong>Endless</strong> Possibilities.</h1>
+          </div>
+
+          <div class="col-lg-3 col-md-6 col-12" data-aos="fade-up" data-aos-delay="100">
+            <h4 class="my-4" >CONTACT INFO</h4>
+
+            <p class="mb-1" >
+               <i class="fa fa-phone mr-2 footer-icon"></i>  
+              <a href="#">number</a>
+            </p>
+
+            <p><a href="">
+                <i class="fa fa-envelope mr-2 footer-icon"></i> 
+                Email
+              </a></p>
+          </div>
+
+          <div class="col-lg-4 mx-lg-auto text-center col-md-8 col-12" data-aos="fade-up" data-aos-delay="300" >
+            <h4><br>WHO ARE WE?</h4>
+            <p><a href="#">
+                An online platform where you share an innovative solution and we sense and explore, experiment, and scale it up.
+           </a></p>
+            <!-- <p><a href="https://www.iq.undp.org/content/iraq/en/home.html">UNDP-Iraq</a>
+                      <br><a href="https://acceleratorlabs.undp.org/">Accelerator Lab</a> 
+                     <br><a href="https://www.iq.undp.org/content/iraq/en/home/accelerator-labs.html">Accelerator Lab-Iraq</a>
+                     <br><a href="https://acceleratorlabs.undp.org/content/acceleratorlabs/en/home/blogs.html?tagid=regions%20and%20countries:arab%20states/iraq,language:English">Our Blogs</a></p> -->
+           </div>
+ 
+
+          <div class="col-lg-3 mx-lg-auto col-md-6 col-12" data-aos="fade-up" data-aos-delay="400">
+            <ul class="social-icon">
+              <li><a href="#" class="fa fa-instagram"></a></li>
+              <li><a href="" class="fa fa-twitter"></a></li>
+              <li><a href="" class="fa fa-facebook"></i></a></li>
+              <li><a href="" class="fa fa-youtube"></i></a></li>
+            </ul>
+          </div>
+          <!-- https://www.instagram.com/acceleratorlabs/?hl=en
+          https://twitter.com/UNDPAccLabs?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor
+          https://www.facebook.com/undpiniraq/
+          https://www.youtube.com/watch?v=n_oZYg0eyOI&t=2s -->
+        </div>
+      </div>
+    </footer>
+
+     <!-- SCRIPTS -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+          <script src="../static/js/bootstrap.min.js"></script>
+     <script src="../static/js/aos.js"></script>
+     <script src="../static/js/owl.carousel.min.js"></script>
+     <script src="../static/js/custom.js"></script>
+     <script src="../static/js.js"></script>
+     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+<script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
+
+</body>
+</html>
